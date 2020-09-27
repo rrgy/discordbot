@@ -455,6 +455,9 @@ module.exports = {
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Users:748964996494524477> RSVPS:'){
                         el.value--
+                        if(el.value < 0){
+                            el.value = 0
+                        }
                     }
                     if(el.name === '<:DeathKnight:632727774896848906> Death Knights'){
                         if(deathKnights.length < 1){
@@ -546,7 +549,6 @@ module.exports = {
                         }
                         else {el.value = absent}
                     }
-                })
-                
+                })          
     }
 }
