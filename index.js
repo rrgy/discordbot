@@ -29,8 +29,8 @@ client.on('message', message => {
     if (command === 'raid1'){
         client.commands.get('raid1').execute(message, args)      
     } 
-    else if (command === 'test'){
-        client.commands.get('test').execute(message, args)
+    else if (command === 'raid2'){
+        client.commands.get('raid2').execute(message, args)
     }
 })
 

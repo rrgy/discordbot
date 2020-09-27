@@ -35,6 +35,7 @@ module.exports = {
                             }
                         })
                     }
+                    
                 })
                 oldEmbd.fields.map(el => {
                     if(el.name === 'RSVPS:'){
@@ -378,4 +379,5 @@ module.exports = {
             .setThumbnail('attachment://image1.png')
         raid1.edit(newEmbd)
     }
+    
 }
