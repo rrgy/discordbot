@@ -28,9 +28,6 @@ const raid1 = new Discord.MessageEmbed()
                 { name: '<:Rogue:632728083178455051> Rogues', value: '\u200B', inline: true },
                 { name: '<:Warlock:632728163130015754> Warlocks', value: '\u200B', inline: true },
                 { name: '<:Warrior:632728189197746177> Warriors', value: '\u200B', inline: true },
-                { name: '\u200B', value:'\u200B', inline: true },
-                { name: '\u200B', value:'\u200B', inline: true },
-                { name: '\u200B', value:'\u200B', inline: true },
                 { name: '<:Late:748951530983522465> Late', value: '\u200B', inline: true },
                 { name: '<:Maybe:748952451754754109> Maybe', value: '\u200B', inline: true },
                 { name: '<:Absent:748952405869330614> Absent', value: '\u200B', inline: true }
@@ -42,7 +39,7 @@ const raid1 = new Discord.MessageEmbed()
 module.exports = {
     name: 'raid2',
     description: "This is Raid 2 command!",
-    execute(message, args){
+    execute(message){
         const deathknight = message.guild.emojis.cache.find(emoji => emoji.name === 'DeathKnight');
         const demonhunter = message.guild.emojis.cache.find(emoji => emoji.name === 'DemonHunter');
         const druid = message.guild.emojis.cache.find(emoji => emoji.name === 'Druid');

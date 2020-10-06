@@ -15,6 +15,55 @@ let warriors = []
 let late = []
 let maybe = []
 let absent = []
+
+//////////////////////////////////////////////////////////////////////////////v
+const updateEmbed = (oldEmbd) => {
+    let count = 0
+
+    for (let i = 0; i < deathKnights.length; i++){
+        count += i
+    }
+    for (let i = 0; i < demonHunters.length; i++){
+        count += i
+    }
+    for(let i = 0; i< druids.length; i++){
+        count += i
+    }
+    for (let i = 0; i < hunters.length; i++){
+        count += i
+    }
+    for (let i = 0; i < mages.length; i++){
+        count += i
+    }
+    for (let i = 0; i < monks.length; i++){
+        count += i
+    }
+    for (let i = 0; i < paladins.length; i++){
+        count += i
+    }
+    for (let i = 0; i < priests.length; i++){
+        count += i
+    }
+    for (let i = 0; i < shamans.length; i++){
+        count += i
+    }
+    for (let i = 0; i < rogues.length; i++){
+        count += i
+    }
+    for (let i = 0; i < warlocks.length; i++){
+        count += i
+    }
+    for (let i = 0; i < warriors.length; i++){
+        count += i
+    }
+
+    oldEmbd.fields.map(el => {
+        if(el.name === '<:Users:748964996494524477> RSVPS:'){
+            el.value = count
+        }
+    })
+}
+//////////////////////////////////////////////////////////////////////////////^
  
 module.exports = {
     confirm: (emoji, raid1, react) => {
@@ -34,16 +83,15 @@ module.exports = {
                         }
                     })
                 })
+                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
-                    if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                        el.value++
-                    }
                     if(el.name === '<:DeathKnight:632727774896848906> Death Knights'){
                         el.value = deathKnights
                     }
                 })
-                break
-
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
 
             case 'DemonHunter':
                 react.users.cache.map(el => {
@@ -57,16 +105,15 @@ module.exports = {
                         }
                     })
                 })
+                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
-                    if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                        el.value++
-                    }
                     if(el.name === '<:DemonHunter:632727839065505832> Demon Hunters'){
                         el.value = demonHunters
                     }
                 })
-                break
-
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
 
             case 'Druid':
                 react.users.cache.map(el => {
@@ -80,282 +127,279 @@ module.exports = {
                         }
                     })
                 })
+                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
-                    if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                        el.value++
-                    }
                     if(el.name === '<:Druid:632727877678530630> Druids'){
                         el.value = druids
                     }
                 })
-                break
-
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
 
             case 'Hunter':
-                    react.users.cache.map(el => {
-                        const userId = el.id
-                        guildMembers.map(e => {
-                            if(userId === e.id){
-                                const guildMember = e.nickname
-                                if(!hunters.includes(guildMember)){
-                                    hunters.push(guildMember)
-                                }
+                react.users.cache.map(el => {
+                    const userId = el.id
+                    guildMembers.map(e => {
+                        if(userId === e.id){
+                            const guildMember = e.nickname
+                            if(!hunters.includes(guildMember)){
+                                hunters.push(guildMember)
                             }
-                        })
-                    })
-                    oldEmbd.fields.map(el => {
-                        if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                            el.value++
-                        }
-                        if(el.name === '<:Hunter:632727911543209984> Hunters'){
-                            el.value = hunters
                         }
                     })
-                    break
+                })
+                //////////////////////////////////////////////////////////////////////////////v
+                oldEmbd.fields.map(el => {
+                    if(el.name === '<:Hunter:632727911543209984> Hunters'){
+                        el.value = hunters
+                    }
+                })
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
 
-
-                case 'Mage':
-                        react.users.cache.map(el => {
-                            const userId = el.id
-                            guildMembers.map(e => {
-                                if(userId === e.id){
-                                    const guildMember = e.nickname
-                                    if(!mages.includes(guildMember)){
-                                        mages.push(guildMember)
-                                    }
-                                }
-                            })
-                        })
-                        oldEmbd.fields.map(el => {
-                            if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                                el.value++
+            case 'Mage':
+                react.users.cache.map(el => {
+                    const userId = el.id
+                    guildMembers.map(e => {
+                        if(userId === e.id){
+                            const guildMember = e.nickname
+                            if(!mages.includes(guildMember)){
+                                mages.push(guildMember)
                             }
-                            if(el.name === '<:Mage:632727944091140176> Mages'){
-                                el.value = mages
+                        }
+                    })
+                })
+                //////////////////////////////////////////////////////////////////////////////v
+                oldEmbd.fields.map(el => {
+                    if(el.name === '<:Mage:632727944091140176> Mages'){
+                        el.value = mages
+                    }
+                })
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
+
+            case 'Monk':
+                react.users.cache.map(el => {
+                    const userId = el.id
+                    guildMembers.map(e => {
+                        if(userId === e.id){
+                            const guildMember = e.nickname
+                            if(!monks.includes(guildMember)){
+                                monks.push(guildMember)
                             }
-                        })
-                        break
+                        }
+                    })
+                })
+                //////////////////////////////////////////////////////////////////////////////v
+                oldEmbd.fields.map(el => {
+                    if(el.name === '<:Monk:632727980497567754> Monks'){
+                        el.value = monks
+                    }
+                })
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
 
-
-                    case 'Monk':
-                        react.users.cache.map(el => {
-                            const userId = el.id
-                            guildMembers.map(e => {
-                                if(userId === e.id){
-                                    const guildMember = e.nickname
-                                    if(!monks.includes(guildMember)){
-                                        monks.push(guildMember)
-                                    }
-                                }
-                            })
-                        })
-                        oldEmbd.fields.map(el => {
-                            if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                                el.value++
+            case 'Paladin':
+                react.users.cache.map(el => {
+                    const userId = el.id
+                    guildMembers.map(e => {
+                        if(userId === e.id){
+                            const guildMember = e.nickname
+                            if(!paladins.includes(guildMember)){
+                                paladins.push(guildMember)
                             }
-                            if(el.name === '<:Monk:632727980497567754> Monks'){
-                                el.value = monks
+                        }
+                    })
+                })
+                //////////////////////////////////////////////////////////////////////////////v
+                oldEmbd.fields.map(el => {
+                    if(el.name === '<:Paladin:632728009224224768> Paladins'){
+                        el.value = paladins
+                    }
+                })
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
+
+            case 'Priest':
+                react.users.cache.map(el => {
+                    const userId = el.id
+                    guildMembers.map(e => {
+                        if(userId === e.id){
+                            const guildMember = e.nickname
+                            if(!priests.includes(guildMember)){
+                                priests.push(guildMember)
                             }
-                        })
-                        break
+                        }
+                    })
+                })
+                //////////////////////////////////////////////////////////////////////////////v
+                oldEmbd.fields.map(el => {
+                    if(el.name === '<:Priest:632728049804378119> Priests'){
+                        el.value = priests
+                    }
+                })
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
 
-
-                    case 'Paladin':
-                        react.users.cache.map(el => {
-                            const userId = el.id
-                            guildMembers.map(e => {
-                                if(userId === e.id){
-                                    const guildMember = e.nickname
-                                    if(!paladins.includes(guildMember)){
-                                        paladins.push(guildMember)
-                                    }
-                                }
-                            })
-                        })
-                        oldEmbd.fields.map(el => {
-                            if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                                el.value++
+            case 'Shaman':
+                react.users.cache.map(el => {
+                    const userId = el.id
+                    guildMembers.map(e => {
+                        if(userId === e.id){
+                            const guildMember = e.nickname
+                            if(!shamans.includes(guildMember)){
+                                shamans.push(guildMember)
                             }
-                            if(el.name === '<:Paladin:632728009224224768> Paladins'){
-                                el.value = paladins
+                        }
+                    })
+                })
+                //////////////////////////////////////////////////////////////////////////////v
+                oldEmbd.fields.map(el => {
+                    if(el.name === '<:Shaman:632728116531560458> Shamans'){
+                        el.value = shamans
+                    }
+                })
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
+
+            case 'Rogue':
+                react.users.cache.map(el => {
+                    const userId = el.id
+                    guildMembers.map(e => {
+                        if(userId === e.id){
+                            const guildMember = e.nickname
+                            if(!rogues.includes(guildMember)){
+                                rogues.push(guildMember)
                             }
-                        })
-                        break
+                        }
+                    })
+                })
+                //////////////////////////////////////////////////////////////////////////////v
+                oldEmbd.fields.map(el => {
+                    if(el.name === '<:Rogue:632728083178455051> Rogues'){
+                        el.value = rogues
+                    }
+                })
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
 
-
-                    case 'Priest':
-                        react.users.cache.map(el => {
-                            const userId = el.id
-                            guildMembers.map(e => {
-                                if(userId === e.id){
-                                    const guildMember = e.nickname
-                                    if(!priests.includes(guildMember)){
-                                        priests.push(guildMember)
-                                    }
-                                }
-                            })
-                        })
-                        oldEmbd.fields.map(el => {
-                            if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                                el.value++
+            case 'Warlock':
+                react.users.cache.map(el => {
+                    const userId = el.id
+                    guildMembers.map(e => {
+                        if(userId === e.id){
+                            const guildMember = e.nickname
+                            if(!warlocks.includes(guildMember)){
+                                warlocks.push(guildMember)
                             }
-                            if(el.name === '<:Priest:632728049804378119> Priests'){
-                                el.value = priests
+                        }
+                    })
+                })
+                //////////////////////////////////////////////////////////////////////////////v
+                oldEmbd.fields.map(el => {
+                    if(el.name === '<:Warlock:632728163130015754> Warlocks'){
+                        el.value = warlocks
+                    }
+                })
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
+
+            case 'Warrior':
+                react.users.cache.map(el => {
+                    const userId = el.id
+                    guildMembers.map(e => {
+                        if(userId === e.id){
+                            const guildMember = e.nickname
+                            if(!warriors.includes(guildMember)){
+                                warriors.push(guildMember)
                             }
-                        })
-                        break
+                        }
+                    })
+                })
+                //////////////////////////////////////////////////////////////////////////////v
+                oldEmbd.fields.map(el => {
+                    if(el.name === '<:Warrior:632728189197746177> Warriors'){
+                        el.value = warriors
+                    }
+                })
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
 
-
-                    case 'Shaman':
-                        react.users.cache.map(el => {
-                            const userId = el.id
-                            guildMembers.map(e => {
-                                if(userId === e.id){
-                                    const guildMember = e.nickname
-                                    if(!shamans.includes(guildMember)){
-                                        shamans.push(guildMember)
-                                    }
-                                }
-                            })
-                        })
-                        oldEmbd.fields.map(el => {
-                            if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                                el.value++
+            case 'Late':
+                react.users.cache.map(el => {
+                    const userId = el.id
+                    guildMembers.map(e => {
+                        if(userId === e.id){
+                            const guildMember = e.nickname
+                            if(!late.includes(guildMember)){
+                                late.push(guildMember)
                             }
-                            if(el.name === '<:Shaman:632728116531560458> Shamans'){
-                                el.value = shamans
+                        }
+                    })
+                })
+                //////////////////////////////////////////////////////////////////////////////v
+                oldEmbd.fields.map(el => {
+                    if(el.name === '<:Late:748951530983522465> Late'){
+                        el.value = late
+                    }
+                })
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break   
+
+            case 'Maybe':
+                react.users.cache.map(el => {
+                    const userId = el.id
+                    guildMembers.map(e => {
+                        if(userId === e.id){
+                            const guildMember = e.nickname
+                            if(!maybe.includes(guildMember)){
+                                maybe.push(guildMember)
                             }
-                        })
-                        break
+                        }
+                    })
+                })
+                //////////////////////////////////////////////////////////////////////////////v
+                oldEmbd.fields.map(el => {
+                    if(el.name === '<:Maybe:748952451754754109> Maybe'){
+                        el.value = maybe
+                    }
+                })
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
 
-
-                    case 'Rogue':
-                        react.users.cache.map(el => {
-                            const userId = el.id
-                            guildMembers.map(e => {
-                                if(userId === e.id){
-                                    const guildMember = e.nickname
-                                    if(!rogues.includes(guildMember)){
-                                        rogues.push(guildMember)
-                                    }
-                                }
-                            })
-                        })
-                        oldEmbd.fields.map(el => {
-                            if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                                el.value++
+            case 'Absent':
+                react.users.cache.map(el => {
+                    const userId = el.id
+                    guildMembers.map(e => {
+                        if(userId === e.id){
+                            const guildMember = e.nickname
+                            if(!absent.includes(guildMember)){
+                                absent.push(guildMember)
                             }
-                            if(el.name === '<:Rogue:632728083178455051> Rogues'){
-                                el.value = rogues
-                            }
-                        })
-                        break
-
-
-                    case 'Warlock':
-                        react.users.cache.map(el => {
-                            const userId = el.id
-                            guildMembers.map(e => {
-                                if(userId === e.id){
-                                    const guildMember = e.nickname
-                                    if(!warlocks.includes(guildMember)){
-                                        warlocks.push(guildMember)
-                                    }
-                                }
-                            })
-                        })
-                        oldEmbd.fields.map(el => {
-                            if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                                el.value++
-                            }
-                            if(el.name === '<:Warlock:632728163130015754> Warlocks'){
-                                el.value = warlocks
-                            }
-                        })
-                        break
-
-
-                    case 'Warrior':
-                        react.users.cache.map(el => {
-                            const userId = el.id
-                            guildMembers.map(e => {
-                                if(userId === e.id){
-                                    const guildMember = e.nickname
-                                    if(!warriors.includes(guildMember)){
-                                        warriors.push(guildMember)
-                                    }
-                                }
-                            })
-                        })
-                        oldEmbd.fields.map(el => {
-                            if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                                el.value++
-                            }
-                            if(el.name === '<:Warrior:632728189197746177> Warriors'){
-                                el.value = warriors
-                            }
-                        })
-                        break
-
-
-                    case 'Late':
-                        react.users.cache.map(el => {
-                            const userId = el.id
-                            guildMembers.map(e => {
-                                if(userId === e.id){
-                                    const guildMember = e.nickname
-                                    if(!late.includes(guildMember)){
-                                        late.push(guildMember)
-                                    }
-                                }
-                            })
-                        })
-                        oldEmbd.fields.map(el => {
-                            if(el.name === '<:Late:748951530983522465> Late'){
-                                el.value = late
-                            }
-                        })
-                        break   
-
-
-                    case 'Maybe':
-                        react.users.cache.map(el => {
-                            const userId = el.id
-                            guildMembers.map(e => {
-                                if(userId === e.id){
-                                    const guildMember = e.nickname
-                                    if(!maybe.includes(guildMember)){
-                                        maybe.push(guildMember)
-                                    }
-                                }
-                            })
-                        })
-                        oldEmbd.fields.map(el => {
-                            if(el.name === '<:Maybe:748952451754754109> Maybe'){
-                                el.value = maybe
-                            }
-                        })
-                        break
-
-
-                    case 'Absent':
-                        react.users.cache.map(el => {
-                            const userId = el.id
-                            guildMembers.map(e => {
-                                if(userId === e.id){
-                                    const guildMember = e.nickname
-                                    if(!absent.includes(guildMember)){
-                                        absent.push(guildMember)
-                                    }
-                                }
-                            })
-                        })
-                        oldEmbd.fields.map(el => {
-                            if(el.name === '<:Absent:748952405869330614> Absent'){
-                                el.value = absent
-                            }
-                        })
-                        break
+                        }
+                    })
+                })
+                //////////////////////////////////////////////////////////////////////////////v
+                oldEmbd.fields.map(el => {
+                    if(el.name === '<:Absent:748952405869330614> Absent'){
+                        el.value = absent
+                    }
+                })
+                updateEmbed(oldEmbd)
+                //////////////////////////////////////////////////////////////////////////////^
+            break
         }
     
         const newEmbd = new Discord.MessageEmbed(oldEmbd)
@@ -453,12 +497,6 @@ module.exports = {
                 })
 
                 oldEmbd.fields.map(el => {
-                    if(el.name === '<:Users:748964996494524477> RSVPS:'){
-                        el.value--
-                        if(el.value < 0){
-                            el.value = 0
-                        }
-                    }
                     if(el.name === '<:DeathKnight:632727774896848906> Death Knights'){
                         if(deathKnights.length < 1){
                             el.value = '\u200B'
