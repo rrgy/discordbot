@@ -111,10 +111,30 @@ const checkNull = (x) => {
         case 'war':
             for(let i = 0; i < warriors.length; i++){
                 if(warriors[i] === null){
-                    warriors.splice(i,1)
+                    warriors.splice(i, 1)
                 }
             }
             break
+        case 'late':
+            for(let i = 0; i < late.length; i++){
+                if(late[i] === null){
+                    late.splice(i, 1)
+                }
+            }
+            break
+        case 'maybe':
+            for(let i = 0; i < maybe.length; i++){
+                if(maybe[i] === null){
+                    maybe.splice(i, 1)
+                }
+            }
+            break
+        case 'absent':
+            for(let i = 0; i < absent.length; i++){
+                if(absent[i]=== null){
+                    absent.splice(i, 1)
+                }
+            }
     } 
 }
  
@@ -384,6 +404,7 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!late.includes(guildMember)){
                                 late.push(guildMember)
+                                checkNull('late')
                             }
                         }
                     })
@@ -404,6 +425,7 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!maybe.includes(guildMember)){
                                 maybe.push(guildMember)
+                                checkNull('maybe')
                             }
                         }
                     })
@@ -424,6 +446,7 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!absent.includes(guildMember)){
                                 absent.push(guildMember)
+                                checkNull('absent')
                             }
                         }
                     })
