@@ -16,46 +16,11 @@ let late = []
 let maybe = []
 let absent = []
 
-//////////////////////////////////////////////////////////////////////////////v
-const updateEmbed = (oldEmbd) => {
-    let count = 0
 
-    for (let i = 0; i < deathKnights.length; i++){
-        count += i
-    }
-    for (let i = 0; i < demonHunters.length; i++){
-        count += i
-    }
-    for(let i = 0; i< druids.length; i++){
-        count += i
-    }
-    for (let i = 0; i < hunters.length; i++){
-        count += i
-    }
-    for (let i = 0; i < mages.length; i++){
-        count += i
-    }
-    for (let i = 0; i < monks.length; i++){
-        count += i
-    }
-    for (let i = 0; i < paladins.length; i++){
-        count += i
-    }
-    for (let i = 0; i < priests.length; i++){
-        count += i
-    }
-    for (let i = 0; i < shamans.length; i++){
-        count += i
-    }
-    for (let i = 0; i < rogues.length; i++){
-        count += i
-    }
-    for (let i = 0; i < warlocks.length; i++){
-        count += i
-    }
-    for (let i = 0; i < warriors.length; i++){
-        count += i
-    }
+const updateEmbed = (oldEmbd) => {
+    let count = deathKnights.length + demonHunters.length + druids.length + hunters.length + mages.length + monks.length + paladins.length + priests.length + shamans.length + rogues.length + warlocks.length + warriors.length
+    console.log(count)
+    
 
     oldEmbd.fields.map(el => {
         if(el.name === '<:Users:748964996494524477> RSVPS:'){
@@ -63,7 +28,95 @@ const updateEmbed = (oldEmbd) => {
         }
     })
 }
-//////////////////////////////////////////////////////////////////////////////^
+
+const checkNull = (x) => {
+    switch(x){
+        case 'dk':
+            for(let i = 0; i < deathKnights.length; i++){
+                if(deathKnights[i] === null){
+                    deathKnights.splice(i, 1)
+                }
+            }
+            break
+        case 'dh':
+            for(let i = 0; i < demonHunters.length; i++){
+                if(demonHunters[i] === null){
+                    demonHunters.splice(i, 1)
+                }
+            }
+            break
+        case 'druid':
+            for(let i = 0; i < druids.length; i++){
+                if(druids[i] === null) {
+                    druids.splice(i, 1)
+                }
+            }
+            break
+        case 'hunt':
+            for(let i = 0; i < hunters.length; i++){
+                if(hunters[i] === null){
+                    hunters.splice(i, 1)
+                }
+            }
+            break
+        case 'mage':
+            for(let i = 0; i < mages.length; i++){
+                if(mages[i] === null){
+                    mages.splice(i, 1)
+                }
+            }
+            break
+        case 'monk':
+            for(let i = 0; i < monks.length; i++){
+                if(monks[i] === null){
+                    monks.splice(i, 1)
+                }
+            }
+            break
+        case 'paladin':
+            for(let i = 0; i < paladins.length; i++){
+                if(paladins[i] === null){
+                    paladins.splice(i, 1)
+                }
+            }
+            break
+        case 'priest':
+            for(let i = 0; i < priests.length; i++){
+                if(priests[i] === null){
+                    priests.splice(i, 1)
+                }
+            }
+            break
+        case 'sham':
+            for(let i = 0; i < shamans.length; i++){
+                if(shamans[i] === null){
+                    shamans.splice(i, 1)
+                }
+            }
+            break
+        case 'rogue':
+            for(let i = 0; i < rogues.length; i++){
+                if(rogues[i] === null){
+                    rogues.splice(i, 1)
+                }
+            }
+            break
+        case 'lock':
+            for(let i = 0; i < warlocks.length; i++){
+                if(warlocks[i] === null){
+                    warlocks.splice(i, 1)
+                }
+            }
+            break
+        case 'war':
+            for(let i = 0; i < warriors.length; i++){
+                if(warriors[i] === null){
+                    warriors.splice(i,1)
+                }
+            }
+            break
+    } 
+}
  
 module.exports = {
     confirm: (emoji, raid1, react) => {
@@ -79,18 +132,17 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!deathKnights.includes(guildMember)){
                                 deathKnights.push(guildMember)
+                                checkNull('dk')
                             }
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:DeathKnight:632727774896848906> Death Knights'){
                         el.value = deathKnights
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'DemonHunter':
@@ -101,18 +153,17 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!demonHunters.includes(guildMember)){
                                 demonHunters.push(guildMember)
+                                checkNull('dh')
                             }
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:DemonHunter:632727839065505832> Demon Hunters'){
                         el.value = demonHunters
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'Druid':
@@ -123,18 +174,17 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!druids.includes(guildMember)){
                                 druids.push(guildMember)
+                                checkNull('druid')
                             }
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Druid:632727877678530630> Druids'){
                         el.value = druids
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'Hunter':
@@ -145,18 +195,17 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!hunters.includes(guildMember)){
                                 hunters.push(guildMember)
+                                checkNull('hunt')
                             }
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Hunter:632727911543209984> Hunters'){
                         el.value = hunters
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'Mage':
@@ -167,18 +216,17 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!mages.includes(guildMember)){
                                 mages.push(guildMember)
+                                checkNull('mage')
                             }
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Mage:632727944091140176> Mages'){
                         el.value = mages
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'Monk':
@@ -189,18 +237,17 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!monks.includes(guildMember)){
                                 monks.push(guildMember)
+                                checkNull('monk')
                             }
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Monk:632727980497567754> Monks'){
                         el.value = monks
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'Paladin':
@@ -211,18 +258,17 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!paladins.includes(guildMember)){
                                 paladins.push(guildMember)
+                                checkNull('paladin')
                             }
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Paladin:632728009224224768> Paladins'){
                         el.value = paladins
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'Priest':
@@ -233,18 +279,17 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!priests.includes(guildMember)){
                                 priests.push(guildMember)
+                                checkNull('priest')
                             }
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Priest:632728049804378119> Priests'){
                         el.value = priests
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'Shaman':
@@ -255,18 +300,17 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!shamans.includes(guildMember)){
                                 shamans.push(guildMember)
+                                checkNull('sham')
                             }
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Shaman:632728116531560458> Shamans'){
                         el.value = shamans
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'Rogue':
@@ -277,18 +321,17 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!rogues.includes(guildMember)){
                                 rogues.push(guildMember)
+                                checkNull('rogue')
                             }
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Rogue:632728083178455051> Rogues'){
                         el.value = rogues
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'Warlock':
@@ -299,18 +342,17 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!warlocks.includes(guildMember)){
                                 warlocks.push(guildMember)
+                                checkNull('lock')
                             }
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Warlock:632728163130015754> Warlocks'){
                         el.value = warlocks
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'Warrior':
@@ -321,18 +363,17 @@ module.exports = {
                             const guildMember = e.nickname
                             if(!warriors.includes(guildMember)){
                                 warriors.push(guildMember)
+                                checkNull('war')
                             }
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Warrior:632728189197746177> Warriors'){
                         el.value = warriors
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'Late':
@@ -347,14 +388,12 @@ module.exports = {
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Late:748951530983522465> Late'){
                         el.value = late
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break   
 
             case 'Maybe':
@@ -369,14 +408,12 @@ module.exports = {
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Maybe:748952451754754109> Maybe'){
                         el.value = maybe
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
 
             case 'Absent':
@@ -391,14 +428,12 @@ module.exports = {
                         }
                     })
                 })
-                //////////////////////////////////////////////////////////////////////////////v
                 oldEmbd.fields.map(el => {
                     if(el.name === '<:Absent:748952405869330614> Absent'){
                         el.value = absent
                     }
                 })
                 updateEmbed(oldEmbd)
-                //////////////////////////////////////////////////////////////////////////////^
             break
         }
     
@@ -419,77 +454,107 @@ module.exports = {
 
                             if(deathKnights.includes(guildMember)){
                                 for(let i = 0; i < deathKnights.length; i++){
-                                    deathKnights.splice(i, 1)
+                                    if(deathKnights[i] === guildMember){
+                                        deathKnights.splice(i, 1)
+                                    }
                                 }
                             }
                             if(demonHunters.includes(guildMember)){
                                 for(let i = 0; i < demonHunters.length; i++){
-                                    demonHunters.splice(i, 1)
+                                    if(demonHunters[i] === guildMember){
+                                        demonHunters.splice(i, 1)
+                                    }
                                 }
                             }
                             if (druids.includes(guildMember)){
                                 for (let i = 0; i < druids.length; i++){
-                                    druids.splice(i, 1)
+                                    if(druids[i] === guildMember){
+                                        druids.splice(i, 1)
+                                    }
                                 }
                             }
                             if(hunters.includes(guildMember)){
                                 for (let i = 0; i < hunters.length; i++){
-                                    hunters.splice(i, 1)
+                                    if(hunters[i] === guildMember){
+                                        hunters.splice(i, 1)
+                                    }
                                 }
                             }
                             if(mages.includes(guildMember)){
                                 for (let i = 0; i < mages.length; i++){
-                                    mages.splice(i, 1)
+                                    if(mages[i] === guildMember){
+                                        mages.splice(i, 1)
+                                    }
                                 }
                             }
                             if(monks.includes(guildMember)){
                                 for (let i = 0; i < monks.length; i++){
-                                    monks.splice(i, 1)
+                                    if(monks[i] === guildMember){
+                                        monks.splice(i, 1)
+                                    }
                                 }
                             }
                             if(paladins.includes(guildMember)){
                                 for (let i = 0; i < paladins.length; i++){
-                                    paladins.splice(i, 1)
+                                    if(paladins[i] === guildMember){
+                                        paladins.splice(i, 1)
+                                    }
                                 }
                             }
                             if(priests.includes(guildMember)){
                                 for (let i = 0; i < priests.length; i++){
-                                    priests.splice(i, 1)
+                                    if(priests[i] === guildMember){
+                                        priests.splice(i, 1)
+                                    }
                                 }
                             }
                             if(shamans.includes(guildMember)){
                                 for (let i = 0; i < shamans.length; i++){
-                                    shamans.splice(i, 1)
+                                    if(shamans[i] === guildMember){
+                                        shamans.splice(i, 1)
+                                    }
                                 }
                             }
                             if(rogues.includes(guildMember)){
                                 for (let i = 0; i < rogues.length; i++){
-                                    rogues.splice(i, 1)
+                                    if(rogues[i] === guildMember){
+                                        rogues.splice(i, 1)
+                                    }
                                 }
                             }
                             if(warlocks.includes(guildMember)){
                                 for (let i = 0; i < warlocks.length; i++){
-                                    warlocks.splice(i, 1)
+                                    if(warlocks[i] === guildMember){
+                                        warlocks.splice(i, 1)
+                                    }
                                 }
                             }
                             if(warriors.includes(guildMember)){
                                 for (let i = 0; i < warriors.length; i++){
-                                    warriors.splice(i, 1)
+                                    if(warriors[i] === guildMember){
+                                        warriors.splice(i, 1)
+                                    }
                                 }
                             }
                             if(late.includes(guildMember)){
                                 for (let i = 0; i < late.length; i++){
-                                    late.splice(i, 1)
+                                    if(late[i] === guildMember){
+                                        late.splice(i, 1)
+                                    }
                                 }
                             }
                             if(maybe.includes(guildMember)){
                                 for (let i = 0; i < maybe.length; i++){
-                                    maybe.splice(i, 1)
+                                    if(maybe[i] === guildMember){
+                                        maybe.splice(i, 1)
+                                    }
                                 }
                             }
                             if(absent.includes(guildMember)){
                                 for (let i = 0; i < absent.length; i++){
-                                    absent.splice(i, 1)
+                                    if(absent[i] === guildMember){
+                                        absent.splice(i, 1)
+                                    }
                                 }
                             }
                         }

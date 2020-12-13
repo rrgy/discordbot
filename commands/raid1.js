@@ -15,8 +15,8 @@ const raid1 = new Discord.MessageEmbed()
         { name: '<:Calendar:748964967352631427> TUESDAY', value:'\u200B', inline: true },
         { name: '<:Clock:748965177248186448> 8pm EST',  value:'\u200B', inline: true },
         { name: 'RSVPS:', value: 0, inline: true },
-        { name: '😄 Demon Hunters', value: '\u200B', inline: true },
         { name: '💩 Death Knights', value: '\u200B', inline: true },
+        { name: '😄 Demon Hunters', value: '\u200B', inline: true },
         { name: '😡 Druids', value: '\u200B', inline: true },
         { name: '💀 Hunters', value: '\u200B', inline: true },
         { name: '😻 Mages', value: '\u200B', inline: true },
@@ -41,24 +41,50 @@ const raid1 = new Discord.MessageEmbed()
 module.exports = {
     name: 'raid1',
     description: 'raid command',
-    execute(message, args){
+    execute(message){
+
         const filter = (reaction, user) => {
             return ['😄', '💩', '😡', '💀', '😻', '🤡', '👿', '👽', '🐶', '🍉', '👍', '😱', '👁️', '🐷', '❄️']
                 .includes(reaction.emoji.name) && user.id === message.author.id
         }
 
         message.channel.send(raid1).then(raid1 => {
-            const classes = ['😄', '💩', '😡', '💀', '😻', '🤡', '👿', '👽', '🐶', '🍉', '👍', '😱', '👁️', '🐷', '❄️']
-            for(i = 0; i < classes.length; i++){
-                raid1.react(classes[i])
-            }
-            // raid1.react('😄')
-            // raid1.react('💩')
+            // const classes = ['😄', '💩', '😡', '💀', '😻', '🤡', '👿', '👽', '🐶', '🍉', '👍', '😱', '👁️', '🐷', '❄️']
+            // for(i = 0; i < classes.length; i++){
+            //     raid1.react(classes[i])
+            // }
+            raid1.react('😄')
+            raid1.react('💩')
+            raid1.react('😡')
+            raid1.react('💀')
+            raid1.react('😻')
+            raid1.react('🤡')
+            raid1.react('👿')
+            raid1.react('👽')
+            raid1.react('🐶')
+            raid1.react('🍉')
+            raid1.react('👍')
+            raid1.react('😱')
+            raid1.react('👁️')
+            raid1.react('🐷')
+            raid1.react('❄️')
 
-            let collector = raid1.createReactionCollector(filter, {time: 60000})
-            collector.on('collect', (reaction, collector) => {
+            let users = []
+            let collector = raid1.createReactionCollector(filter)
+            collector.on('collect', (reaction, user) => {
                 const react = reaction
-                signUp.confirm(reaction.emoji.name, raid1, react)    
+                react.users.cache.map(el => {
+                    if(el.bot === false){
+                        if (!users.includes(user.tag)){
+                            signUp.confirm(reaction.emoji.name, raid1, react)
+                            users.push(user.tag)
+                        }
+                        else if(users.includes(user.tag)){
+                            signUp.remove(raid1, react)
+                            signUp.confirm(reaction.emoji.name, raid1, react)
+                        }
+                    }
+                })
             })
 
             collector.on('end', collected => {
